@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mybizna_mobilecom.ignore_list">
+      <field name="name">Ignore List</field>
+      <field name="model">mybizna.mobilecom.ignore</field>
+      <field name="arch" type="xml">
+        <tree  default_order='id desc'>
+          <field name="format"/>
+          <field name="published"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mybizna_mobilecom.ignore_action_window">
+      <field name="name">Ignore</field>
+      <field name="res_model">mybizna.mobilecom.ignore</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="mybizna_mobilecom.ignore_action_server">
+      <field name="name">Ignore</field>
+      <field name="model_id" ref="model_mybizna_mobilecom_ignore"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Ignore" id="mybizna_mobilecom.ignore" parent="mybizna_mobilecom.menu_setting"
+              action="mybizna_mobilecom.ignore_action_window" sequence="4"/>
+
+
+  </data>
+</odoo>

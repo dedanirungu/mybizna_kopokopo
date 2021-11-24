@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mybizna_mobilecom_format,mybizna_mobilecom.format,model_mybizna_mobilecom_format,base.group_user,1,1,1,1
+access_mybizna_mobilecom_gateways,mybizna_mobilecom.gateways,model_mybizna_mobilecom_gateways,base.group_user,1,1,1,1
+access_mybizna_mobilecom_ignore,mybizna_mobilecom.ignore,model_mybizna_mobilecom_ignore,base.group_user,1,1,1,1
+access_mybizna_mobilecom_message,mybizna_mobilecom.message,model_mybizna_mobilecom_message,base.group_user,1,1,1,1
+access_mybizna_mobilecom_message_moreinfo,mybizna_mobilecom.message_moreinfo,model_mybizna_mobilecom_message_moreinfo,base.group_user,1,1,1,1
+access_mybizna_mobilecom_message_template,mybizna_mobilecom.message_template,model_mybizna_mobilecom_message_template,base.group_user,1,1,1,1
+access_mybizna_mobilecom_payment,mybizna_mobilecom.payment,model_mybizna_mobilecom_payment,base.group_user,1,1,1,1
+access_mybizna_mobilecom_payment_source,mybizna_mobilecom.payment_source,model_mybizna_mobilecom_payment_source,base.group_user,1,1,1,1

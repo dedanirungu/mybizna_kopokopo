@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <!-- Top menu item -->
+    <menuitem name="Mobile Connect" id="mybizna_mobilecom.menu_root" sequence="-4"/>
+
+    <menuitem id="mybizna_mobilecom.menu_setting"
+      parent="mybizna_mobilecom.menu_root"
+      sequence="7"
+      name="Setting"/>
+
+    <menuitem id="mybizna_mobilecom.menu_action"
+      parent="mybizna_mobilecom.menu_root"
+      sequence="7"
+      name="Action"/>
+
+
+
+
+  </data>
+</odoo>

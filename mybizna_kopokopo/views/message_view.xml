@@ -1,0 +1,116 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mybizna_mobilecom.message_list">
+      <field name="name">Message List</field>
+      <field name="model">mybizna.mobilecom.message</field>
+      
+      <field name="arch" type="xml">
+        <tree default_order='id desc'>
+          <field name="phone"/>
+          <field name="message"/>
+          <field name="direction"/>
+          <field name="date_sent"/>
+          <field name="completed"/>
+          <field name="successful"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="mybizna_mobilecom.action_process_message" model="ir.actions.server">
+
+      <field name="name">Process Message</field>
+
+      <field name="type">ir.actions.server</field>
+
+      <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+
+      <field name="state">code</field>
+
+      <field name="code">env.get('mybizna.mobilecom.message').processMessages()</field>
+
+    </record>
+
+
+
+    <record id="mybizna_mobilecom.action_fetch_message" model="ir.actions.server">
+
+      <field name="name">Fetch Message</field>
+
+      <field name="type">ir.actions.server</field>
+
+      <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+
+      <field name="state">code</field>
+
+      <field name="code">env.get('mybizna.mobilecom.message').fetchMessages()</field>
+
+    </record>
+
+
+
+    <record id="mybizna_mobilecom.action_send_message" model="ir.actions.server">
+
+      <field name="name">Send Message</field>
+
+      <field name="type">ir.actions.server</field>
+
+      <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+
+      <field name="state">code</field>
+
+      <field name="code">env.get('mybizna.mobilecom.message').sendMessages()</field>
+
+    </record>
+
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mybizna_mobilecom.message_action_window">
+      <field name="name">Message</field>
+      <field name="res_model">mybizna.mobilecom.message</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="mybizna_mobilecom.message_action_server">
+      <field name="name">Message</field>
+      <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Message" id="mybizna_mobilecom.message" parent="mybizna_mobilecom.menu_root"
+              action="mybizna_mobilecom.message_action_window" sequence="4"/>
+    
+    
+    <menuitem name="Process Message" id="mybizna_mobilecom.process_message" parent="mybizna_mobilecom.menu_action"
+              action="mybizna_mobilecom.action_process_message" sequence="5"/>
+    
+    
+    <menuitem name="Fetch Message" id="mybizna_mobilecom.fetch_message" parent="mybizna_mobilecom.menu_action"
+              action="mybizna_mobilecom.action_process_message" sequence="5"/>
+    
+    
+    <menuitem name="Send Message" id="mybizna_mobilecom.send_message" parent="mybizna_mobilecom.menu_action"
+              action="mybizna_mobilecom.action_process_message" sequence="5"/>
+
+
+
+
+  </data>
+</odoo>

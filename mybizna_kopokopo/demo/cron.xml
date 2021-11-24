@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+
+      <record id="mybizna_mobilecom.fetch_message" model="ir.cron">
+        <field name="name">Mybizna Fetch Messages</field>
+        <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="state">code</field>
+        <field name="code">env.get('mybizna.mobilecom.message').fetchMessages()</field>
+        <field name="interval_type">minutes</field>
+        <field name="interval_number">6</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">5</field>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+      </record>
+    
+      <record id="mybizna_mobilecom.send_message" model="ir.cron">
+        <field name="name">Mybizna Send Messages</field>
+        <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="state">code</field>
+        <field name="code">env.get('mybizna.mobilecom.message').sendMessages()</field>
+        <field name="interval_type">minutes</field>
+        <field name="interval_number">6</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">5</field>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+      </record>
+
+      <record id="mybizna_mobilecom.process_message" model="ir.cron">
+        <field name="name">Mybizna Process Messages</field>
+        <field name="model_id" ref="model_mybizna_mobilecom_message"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="state">code</field>
+        <field name="code">env.get('mybizna.mobilecom.message').processMessages()</field>
+        <field name="interval_type">minutes</field>
+        <field name="interval_number">6</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">5</field>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+      </record>
+
+      <record id="mybizna_mobilecom.process_payment" model="ir.cron">
+        <field name="name">Mybizna Process Payments</field>
+        <field name="model_id" ref="model_mybizna_mobilecom_payment"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="state">code</field>
+        <field name="code">env.get('mybizna.mobilecom.payment').processPayments()</field>
+        <field name="interval_type">minutes</field>
+        <field name="interval_number">6</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">5</field>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+      </record>
+
+    </data>
+</odoo>

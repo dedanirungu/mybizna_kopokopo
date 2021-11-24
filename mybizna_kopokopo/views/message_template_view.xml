@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mybizna_mobilecom.message_template_list">
+      <field name="name">Message Template List</field>
+      <field name="model">mybizna.mobilecom.message_template</field>
+      <field name="arch" type="xml">
+        <tree default_order='id desc'>
+          <field name="title"/>
+          <field name="unique_name"/>
+          <field name="template"/>
+          <field name="published"/>
+        </tree>
+      </field>
+    </record>
+
+       <record model="ir.ui.view" id="mybizna_mobilecom.message_template_form">
+      <field name="name">Message Template Form</field>
+      <field name="model">mybizna.mobilecom.message_template</field>
+      <field name="arch" type="xml">
+        <form string="Message Template Form">
+          <sheet>
+
+            <group col="4">
+              <field name="title"/>
+              <field name="unique_name" attrs="{'readonly':1}"/>
+              <field name="template"/>
+              <field name="published" attrs="{'readonly':1}"/>
+            </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+ 
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mybizna_mobilecom.message_template_action_window">
+      <field name="name">Message Template</field>
+      <field name="res_model">mybizna.mobilecom.message_template</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="mybizna_mobilecom.message_template_action_server">
+      <field name="name">Message Template</field>
+      <field name="model_id" ref="model_mybizna_mobilecom_message_template"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Message Template" id="mybizna_mobilecom.message_template" parent="mybizna_mobilecom.menu_setting"
+              action="mybizna_mobilecom.message_template_action_window" sequence="7"/>
+
+
+  </data>
+</odoo>

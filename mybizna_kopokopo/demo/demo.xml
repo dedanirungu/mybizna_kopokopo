@@ -1,0 +1,57 @@
+<odoo>
+    <data noupdate="1">
+        <record id="format_0" model="mybizna.mobilecom.format">
+          <field name="title">Paybill Number</field>
+          <field name="format">(.*) Confirmed. on (.*) at (.*) (.*) received from (.*) (.*).  Account Number (.*) New Utility balance</field>
+          <field name="fields_str">code, date,time,amount,name,phone,account</field>
+          <field name="published">1</field>
+        </record>
+        <record id="format_1" model="mybizna.mobilecom.format">
+          <field name="title">Personal Number</field>
+          <field name="format">(.*) Confirmed.You have received (.*) from (.*) (.*) on (.*) at (.*) New M-PESA balance is (.*).</field>
+          <field name="fields_str">code,amount,name,phone,date,time</field>
+          <field name="published">1</field>
+        </record>
+        <record id="message_template_0" model="mybizna.mobilecom.message_template">
+          <field name="title">Customer Not Found</field>
+          <field name="unique_name">customer_not_found</field>
+          <field name="template">Customer with phone number [PHONE] was not Found. Please contact Admin [ADMIN_PHONE] or reply with your account name / phone number.</field>
+          <field name="published">1</field>
+        </record>
+        <record id="message_template_1" model="mybizna.mobilecom.message_template">
+          <field name="title">Customer Found With Many Invoices</field>
+          <field name="unique_name">customer_found_with_invoices</field>
+          <field name="template">Hi [Name]. Following are active invoices;[INVOICES]. Reply.</field>
+          <field name="published">1</field>
+        </record>
+        <record id="message_template_2" model="mybizna.mobilecom.message_template">
+          <field name="title">Payment Sucessful</field>
+          <field name="unique_name">payment_successful</field>
+          <field name="template">Hi [Name]. Payment Successful. Payment of [AMOUNT] was made to invoice [INVOICE_ID] [NOTE]. For more info call [ADMIN_PHONE]</field>
+          <field name="published">1</field>
+        </record>
+        <record id="message_template_3" model="mybizna.mobilecom.message_template">
+          <field name="title">Payment Failed</field>
+          <field name="unique_name">payment_failed</field>
+          <field name="template">Payment Failed. Please contact Admin [ADMIN_PHONE] </field>
+          <field name="published">1</field>
+        </record>
+
+        <record id="message_template_4" model="mybizna.mobilecom.message_template">
+          <field name="title">Pending Request for Info</field>
+          <field name="unique_name">pending_request_info</field>
+          <field name="template">There is a pending requesting for more information from previous payment. To correct it, please contact Admin [ADMIN_PHONE] </field>
+          <field name="published">1</field>
+        </record>
+        <record id="message_template_5" model="mybizna.mobilecom.message_template">
+          <field name="title">Customer Not Found Again</field>
+          <field name="unique_name">customer_not_found_again</field>
+          <field name="template">[ACCOUNT] was not Found. Please contact Admin [ADMIN_PHONE] or reply with your account name / phone number.</field>
+          <field name="published">1</field>
+        </record>
+        <record id="ignore_5" model="mybizna.mobilecom.ignore">
+          <field name="format">Delivered</field>
+          <field name="published">1</field>
+        </record>
+    </data>
+</odoo>

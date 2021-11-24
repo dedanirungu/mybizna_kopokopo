@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mybizna_mobilecom.payment_list">
+      <field name="name">Payment List</field>
+      <field name="model">mybizna.mobilecom.payment</field>
+      <field name="arch" type="xml">
+        <tree default_order='id desc'>
+          <field name="name"/>
+          <field name="phone"/>
+          <field name="code"/>
+          <field name="amount"/>
+          <field name="format_id"/>
+          <field name="account"/>
+          <field name="message_id"/>
+          <field name="completed"/>
+          <field name="successful"/>     
+          <field name="date_sent"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="mybizna_mobilecom.action_process_payment" model="ir.actions.server">
+
+      <field name="name">Process Payment</field>
+
+      <field name="type">ir.actions.server</field>
+
+      <field name="model_id" ref="model_mybizna_mobilecom_payment"/>
+
+      <field name="state">code</field>
+
+      <field name="code">env.get('mybizna.mobilecom.payment').processPayments()</field>
+
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mybizna_mobilecom.payment_action_window">
+      <field name="name">Payment</field>
+      <field name="res_model">mybizna.mobilecom.payment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="mybizna_mobilecom.payment_action_server">
+      <field name="name">Payment</field>
+      <field name="model_id" ref="model_mybizna_mobilecom_payment"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Payment" id="mybizna_mobilecom.payment" parent="mybizna_mobilecom.menu_root"
+              action="mybizna_mobilecom.payment_action_window" sequence="5"/>
+
+    <menuitem name="Process Payment" id="mybizna_mobilecom.process_payment" parent="mybizna_mobilecom.menu_action"
+              action="mybizna_mobilecom.action_process_payment" sequence="5"/>
+
+  </data>
+</odoo>
